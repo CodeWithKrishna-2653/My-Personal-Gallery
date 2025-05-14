@@ -82,6 +82,37 @@ const handleMouseUp = () => {
   isDown = false
 }
 
+// Password Security System
+
+
+function checkPassword() {
+    const correctPassword = "Krishna.Ayushi"; // Replace with your desired password
+    const blackScreen = document.getElementById("black-screen");
+    const passwordModal = document.getElementById("password-modal");
+    const passwordInput = document.getElementById("password-input");
+    const submitButton = document.getElementById("submit-password");
+    const errorMessage = document.getElementById("error-message");
+
+    // Show the password modal
+    passwordModal.style.display = "flex";
+
+    // Handle password submission
+    submitButton.addEventListener("click", () => {
+        const userPassword = passwordInput.value;
+
+        if (userPassword === correctPassword) {
+            blackScreen.classList.add("hidden"); // Hide the black screen
+            passwordModal.style.display = "none"; // Hide the modal
+        } else {
+            errorMessage.textContent = "Incorrect password. Please try again.";
+            errorMessage.style.display = "block";
+        }
+    });
+}
+
+// Call the password check function when the page loads
+window.onload = checkPassword;
+
 /*--------------------
 Listeners
 --------------------*/
